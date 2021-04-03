@@ -1,9 +1,9 @@
 https://www.kaggle.com/jummyegg/rawg-game-dataset
 
 Data Structures to Compare (using Time):
-Array			absolute worst case
+Array			absolute worst case, use vector
 Balanced Tree		refactor from proj1
-Map			std::unordered_map
+Map			make from scratch!!!!
 
 
 Know Your Game
