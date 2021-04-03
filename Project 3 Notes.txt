@@ -1,0 +1,81 @@
+https://www.kaggle.com/jummyegg/rawg-game-dataset
+
+Data Structures to Compare (using Time):
+Array			absolute worst case
+Balanced Tree		refactor from proj1
+Map			std::unordered_map
+
+
+Know Your Game
+Main Functions:
+	Search by RAWG ID (1 result)		
+	Search by Name (1 result)
+	Search by Genre (multiple results)
+	Search by Developer (multiple results)
+
+For functions with (multiple results):
+	What platform are you looking for?
+	How should the games be sorted?
+	How many games to display?
+	Display minimal details (Name, Dev, Rating, Playtime)
+	
+Game class stored as:
+	id (tree/map are constructed with this as node/index)
+	name
+	developer(s)
+	genre (replace blank with ?)
+	date released
+	metacritic rating (repl. 0 with N/A when displaying)
+	playtime (repl. 0 with ? when displaying)
+	achievements (repl. 0 with ? when displaying)
+
+
+
+
+Rough outline of the CLI:
+
+##################
+# Know Your Game #
+##################
+
+How would you like to get to Know Your Game?
+1. Search by id
+2. Search by genre
+3. Search by platform
+4. Search by developer
+5. ...
+n. Exit
+
+Enter an integer: 2
+
+What genre are you looking for? action
+How should the games be sorted?
+1. Rating
+2. Alphabetical
+
+Enter an integer: 2
+
+How many games to display?
+Enter an integer: 3
+
+Name	Developer	Rating	Playtime
+...	...		...	...
+...	...		...	...
+...	...		...	...
+
+Array implementation took X seconds.
+AVL Tree implementation took Y seconds.
+Map implementation took Z seconds.
+
+
+
+
+
+
+
+
+
+
+
+
+
