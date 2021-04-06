@@ -9,17 +9,17 @@
 // Each node has a game, id, node height, and pointers to its left and right children
 // If a node is empty, it is assigned nullptr
 struct Node {
-        int id;
-        std::string name;
+    int id;
+    std::string name;
 
-        int height = 0;
-        Node* left;
-        Node* right;
+    int height = 0;
+    Node* left;
+    Node* right;
 
-        Node() : name(""), id(0), left(nullptr), right(nullptr) {};
-        Node(std::string name, int id) : name(name), id(id), height(1), left(nullptr), right(nullptr) {};
-        Node(std::string name, int id, Node* left, Node* right) : name(name), id(id), left(left), right(right) {};
-    };
+    Node() : name(""), id(0), left(nullptr), right(nullptr) {};
+    Node(std::string name, int id) : name(name), id(id), height(1), left(nullptr), right(nullptr) {};
+    Node(std::string name, int id, Node* left, Node* right) : name(name), id(id), left(left), right(right) {};
+};
 
 // AVL Tree sorted by student IDs
 // Only data is the root, which keeps track of its children
