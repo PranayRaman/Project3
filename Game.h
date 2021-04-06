@@ -11,6 +11,7 @@ struct Game {
     string name = "";
     vector<string> developers;
     vector<string> genres;
+    vector<string> platforms;
     string releaseDate = "";
     double rating = 0.0;
     int playtime = 0;
