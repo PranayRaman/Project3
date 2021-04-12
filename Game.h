@@ -11,15 +11,17 @@ struct Game {
     string name = "";
     vector<string> developers;
     vector<string> genres;
-    vector<string> platforms;
     string releaseDate = "";
     double rating = 0.0;
     int playtime = 0;
     int achievementCount = 0;
     vector<string> platform;
 
+    Game();
     Game(int id_, string name_, vector<string> developers_, vector<string> genres_, string releaseDate_, double rating_, int playtime_, int achievementCount, vector<string> platform_);
 };
+
+Game::Game() {}
 
 Game::Game(int id_, string name_, vector<string> developers_, vector<string> genres_, string releaseDate_, double rating_, int playtime_, int achievementCount, vector<string> platform_){
     id =  id_;
