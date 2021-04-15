@@ -1,4 +1,4 @@
-#include "FileRead.h";
+#include "FileRead.cpp";
 
 int main() {
     vector<Game> g;
