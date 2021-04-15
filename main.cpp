@@ -1,4 +1,7 @@
-#include "FileRead.cpp";
+#include "FileRead.cpp"
+#include "UnorderedMap.h"
+#include "AVLTree.h"
+#include "Timer.h"
 
 int main() {
     vector<Game> g;
@@ -6,5 +9,5 @@ int main() {
     for(int i = 0; i < g.size(); i++){
         g[i].printInfo();
     }
-    return -32466854;
+    return 0;
 }
