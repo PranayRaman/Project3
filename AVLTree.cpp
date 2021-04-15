@@ -80,17 +80,17 @@ Node* AVLTree::balance(Node* node) {
 }
 
 // Helper function for insert(); iterate with recursion to insert node
-Node* AVLTree::insertHelper(Node* node, std::string& name, int& id) {
+Node* AVLTree::insertHelper(Node* node, Game& game, int& id) {
     if (node == nullptr) {
         std::cout << "successful" << std::endl;
-        return new Node(name, id);
+        return new Node(game, id);
     }
 
     // Iterate downward until target id is found (or not)
     else if (id > node->id)
-        node->right = insertHelper(node->right, name, id);
+        node->right = insertHelper(node->right, game, id);
     else if (id < node->id)
-        node->left = insertHelper(node->left, name, id);
+        node->left = insertHelper(node->left, game, id);
     else 
         std::cout << "unsuccessful" << std::endl;
 
@@ -105,8 +105,8 @@ Node* AVLTree::insertHelper(Node* node, std::string& name, int& id) {
 }
 
 // Create a new node and add to Tree, then balance if necessary
-void AVLTree::insert(std::string name, int id) {
-    root = insertHelper(root, name, id);
+void AVLTree::insert(Game& game, int id) {
+    root = insertHelper(root, game, id);
 }
 
 
@@ -144,7 +144,7 @@ Node* AVLTree::removeHelper(Node* node, int& id, bool firstPass) {
         }
 
         temp = s.top();
-        node->name = temp->name;
+        node->game.name = temp->game.name;
         node->id = temp->id;
         node->right = removeHelper(node->right, temp->id, false);
     }
@@ -165,7 +165,7 @@ void AVLTree::searchHelper(Node* node, int& id) {
     }
 
     else if (id == node->id)
-        std::cout << node->name << std::endl;
+        std::cout << node->game.name << std::endl;
     else if (id > node->id)
         return searchHelper(node->right, id);
     else
@@ -197,9 +197,10 @@ void AVLTree::nameSearchHelper(Node* node, std::string& name, std::string& idLis
     if (node == nullptr)
         return;
     
-    if (node->name == name) {
+    if (node->game.name == name) {
         idList += toIdString(node->id) + '\n';
     }
+    
     nameSearchHelper(node->left, name, idList);
     nameSearchHelper(node->right, name, idList);
 }
@@ -223,7 +224,7 @@ void AVLTree::inorderHelper(Node* node, std::string& nameList) {
         return;
     
     inorderHelper(node->left, nameList);
-    nameList += node->name + ", ";
+    nameList += node->game.name + ", ";
     inorderHelper(node->right, nameList);
 }
 
@@ -243,7 +244,7 @@ void AVLTree::preorderHelper(Node* node, std::string& nameList) {
     if (node == nullptr)
         return;
     
-    nameList += node->name + ", ";
+    nameList += node->game.name + ", ";
     preorderHelper(node->left, nameList);
     preorderHelper(node->right, nameList);
 }
@@ -266,7 +267,7 @@ void AVLTree::postorderHelper(Node* node, std::string& nameList) {
     
     postorderHelper(node->left, nameList);
     postorderHelper(node->right, nameList);
-    nameList += node->name + ", ";
+    nameList += node->game.name + ", ";
 }
 
 // Postorder traversal
