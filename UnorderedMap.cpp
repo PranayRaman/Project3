@@ -1,5 +1,4 @@
 #include "UnorderedMap.h"
-#include <iterator>
 #include <stdexcept>
 
 // Node object for separate chaining
