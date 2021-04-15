@@ -55,16 +55,3 @@ void Game::printInfo(){
         cout << achievementCount << endl;
     cout << "-----------------------------------" << endl;
 }
-
-
-/*
-Game class stored as:
-	id (tree/map are constructed with this as node/index)
-	name
-	developer(s)
-	genre (replace blank with ?)
-	date released
-	metacritic rating (repl. 0 with N/A when displaying)
-	playtime (repl. 0 with ? when displaying)
-	achievements (repl. 0 with ? when displaying)
-*/
