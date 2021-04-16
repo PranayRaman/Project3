@@ -1,33 +1,6 @@
 #include "UnorderedMap.h"
 #include <stdexcept>
 
-// Node object for separate chaining
-struct UnorderedMap::MapNode {
-    Game game;
-    MapNode* next;
-    MapNode(Game g) {game = g; next = nullptr;}
-};
-
-class UnorderedMap::iterator {
-    UnorderedMap* map;
-    MapNode* it;
-    int index;
-public:
-    iterator(UnorderedMap* map) {this->map = map; it = nullptr; index = 0;}
-    iterator(UnorderedMap* map, MapNode* node) {this->map = map; it = node; index = 0;}
-    int first() {return it->game.id;}
-    Game& second() {return it->game;}
-    void operator=(iterator rhs) {it = rhs.it;}
-    bool operator==(iterator rhs) {return it == rhs.it;}
-    bool operator!=(iterator rhs) {return it != rhs.it;}
-    iterator& operator++() {
-        if (it == nullptr || it->next == nullptr)
-            it = map->arr[++index];
-        else it = it->next;
-        return *this;
-    }
-};
-
 // Find first available element
 // If empty, return first index (which is nullptr)
 UnorderedMap::iterator UnorderedMap::begin() {

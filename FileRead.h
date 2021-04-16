@@ -14,7 +14,8 @@ Game class stored as:
 	id (tree/map are constructed with this as node/index)
 	name
 	developer(s)
-	genre (replace blank with ?)
+	genre(s) (replace blank with ?)
+	platform(s)
 	date released
 	metacritic rating (repl. 0 with N/A when displaying)
 	playtime (repl. 0 with ? when displaying)
@@ -50,15 +51,32 @@ void Load(string filename, vector<Game>& gameVector) {
     int playtime = 0;
     int achievementCount = 0;
 
-	string value;
+	string value = "";
 	int count = 1;
 
 	ifstream file(filename);
 	string fileline;
 
+	getline(file, fileline);	// Ignore first line
 	while (getline(file, fileline)) {
 		stringstream linestream(fileline);
 		while (getline(linestream, value, ',')) {
+			if (value.size() > 0 && value[0] == '\"') { 	// Handle strings with commas included
+				string temp = "";
+				char c = ',';
+				value += c;
+				while (linestream) {						// Iterate until "\"," is encountered
+					c = linestream.get();
+					value += c;
+					if (c == '\"')
+						if (linestream.peek() == ',') {
+							linestream.get();
+							break;
+						}
+				}
+				value.erase(value.begin());					// Remove front and end quotations
+        		value.erase(value.end()-1);
+			}
 			switch (count) {
 			case 1: //id
                 try {
@@ -68,13 +86,12 @@ void Load(string filename, vector<Game>& gameVector) {
 					id = 00000000;
 				}
 				break;
-			case 2: //slug
+			case 2: //-slug
 				break;
 			case 3: //name
 				name = value;
 				break;
-			case 4: //metacritic
-				rating = stod(value);
+			case 4: //-metacritic
                 break;
 			case 5: //released
 				releaseDate = value;
@@ -85,7 +102,10 @@ void Load(string filename, vector<Game>& gameVector) {
                 break;
 			case 8: //-website
 				break;
-            case 9: //-rating
+            case 9: //rating
+				if (value != "")
+					rating = stod(value);
+				else rating = 0.0;
                 break;
 			case 10: //-rating top
 				break;
