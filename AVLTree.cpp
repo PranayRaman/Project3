@@ -178,18 +178,18 @@ void AVLTree::search(int id) {
 }
 
 //Searching for Developer
-void AVLTree::searchDevHelper(Node* node, string& Dev) {
+void AVLTree::searchDevHelper(Node* node, string& dev) {
     if (node == nullptr)
         return;
     
     for(int i =0; i< node->game.developers.size(); i++){
 
-            if(Dev==node->game.developers[i]){
+            if(dev==node->game.developers[i]){
                 cout<<node->game.developers[i];
             }
     }
-    searchDevHelper(node->left, Dev);
-    searchDevHelper(node->right, Dev);
+    searchDevHelper(node->left, dev);
+    searchDevHelper(node->right, dev);
     
 }
 

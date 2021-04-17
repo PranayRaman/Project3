@@ -1,39 +1,29 @@
 #include "UnorderedMap.h"
 #include <stdexcept>
 #include <utility>
-#include <queue>
 using std::make_pair;
-using std::priority_queue;
 
 
 // Hash function: uses x % capacity
 int UnorderedMap::hash(int id) const {return id % capacity;}
 
-// Helper function for inserting/updating pairs
-void UnorderedMap::insertPair(vector<vector<pair<int,Game>>>& arr, Game& game) {
-    auto pair = make_pair(game.id, game);
-    arr[hash(game.id)].push_back(pair);
-    ++_size;
-    checkResize();
-}
-
 // Helper function to check for resize and, if so, execute it
 void UnorderedMap::checkResize() {
     if ((double)_size/(double)capacity >= MAX_LOAD_FACTOR)
-        resize(true);
+        resize(capacity*2);
     else if ((double)_size/(double)capacity*2 < MAX_LOAD_FACTOR && capacity > 10)
-        resize(false);
+        resize(capacity/2);
 }
 
 // Create a new arr to reflect size change and insert all old values into it
-void UnorderedMap::resize(bool isSizeUp) {
-    capacity = (isSizeUp) ? capacity*2 : capacity/2;
+void UnorderedMap::resize(int newCapacity) {
     vector<vector<pair<int,Game>>> newArr;
-    newArr.resize(capacity);
+    newArr.resize(newCapacity);
     for (auto& bucket : arr)
         for (auto& pair : bucket)
             newArr[hash(pair.first)].push_back(pair);
-    arr.swap(newArr);
+    capacity = newCapacity;
+    arr = newArr;
 }
 
 
@@ -42,6 +32,12 @@ void UnorderedMap::resize(bool isSizeUp) {
 UnorderedMap::UnorderedMap() {
     _size = 0;
     capacity = 10;
+    arr.resize(capacity);
+}
+// Argument constructor: capacity
+UnorderedMap::UnorderedMap(int capacity) {
+    _size = 0;
+    this->capacity = capacity;
     arr.resize(capacity);
 }
 
@@ -60,10 +56,22 @@ int UnorderedMap::max_size() {
     return capacity;
 }
 
+// Request a change in capacity and force a resize
+void UnorderedMap::reserve(int capacity) {
+    resize(capacity);
+}
+
 
 // Insert a Game then resize if necessary
+// If trying to insert a key that already exists, do nothing
 void UnorderedMap::insert(Game& game) {
-    insertPair(arr, game);
+    auto newPair = make_pair(game.id, game);
+    for (auto& pair : arr[hash(game.id)])
+        if (pair.first == newPair.first)
+            return;
+    arr[hash(game.id)].push_back(newPair);
+    ++_size;
+    checkResize();
 }
 
 // Remove a Game without considering resizing.

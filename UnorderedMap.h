@@ -11,19 +11,20 @@ class UnorderedMap {
 private:
     vector<vector<pair<int,Game>>> arr;
     int _size, capacity;
-    const double MAX_LOAD_FACTOR = 0.8;
+    const double MAX_LOAD_FACTOR = 1.0;
     int hash(int id) const;
 
-    void insertPair(vector<vector<pair<int,Game>>>& arr, Game& game);
     void checkResize();
-    void resize(bool isSizeUp);
+    void resize(int newCapacity);
 
 public:
     UnorderedMap();
+    UnorderedMap(int capacity);
 
     bool empty();
     int size();
     int max_size();
+    void reserve(int capacity);
 
     void insert(Game& game);
     void erase(int id);
@@ -32,11 +33,7 @@ public:
     Game searchId(int id);
     Game searchName(string name);
     vector<Game> searchDeveloper(string dev);
-    vector<Game> getLongestPlayed();
-    vector<Game> getMostPopular(string genre);
 
     Game& operator[](int id);
     Game& at(int id);
-
-
 };
