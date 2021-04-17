@@ -22,17 +22,24 @@ Game class stored as:
 	achievements (repl. 0 with ? when displaying)
 */
 vector<string> getVector(string s){
-	string value = "";
 	vector<string> v;
-	int delimCount = 0;
-	stringstream linestream(s);
-	while (getline(linestream, value, '|')) {
-		delimCount++;
-		if(delimCount == 2){
-			delimCount = 0;
-			v.push_back(value);
-		}
+	if (s.find('|') == string::npos) {		// No | characters means 1 string to put into vector
+		v.push_back(s);
+		return v;
 	}
+	char c = 0;
+	string value = "";
+	stringstream linestream(s);
+	while (linestream.peek() != (char)(-1)) {				// Handle "||" delimiter
+		c = linestream.get();
+		if (c == '|' && linestream.peek() == '|') {
+			linestream.get();
+			v.push_back(value);
+			value = "";
+		}
+		else value += c;
+	}
+	v.push_back(value);
 	return v;
 }
 
@@ -65,7 +72,7 @@ void Load(string filename, vector<Game>& gameVector) {
 				string temp = "";
 				char c = ',';
 				value += c;
-				while (linestream) {						// Iterate until "\"," is encountered
+				while (linestream.good()) {					// Iterate until "\"," is encountered
 					c = linestream.get();
 					value += c;
 					if (c == '\"')
