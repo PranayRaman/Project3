@@ -177,6 +177,28 @@ void AVLTree::search(int id) {
     searchHelper(root, id);
 }
 
+//Searching for Developer
+void AVLTree::searchDevHelper(Node* node, string& dev) {
+    if (node == nullptr)
+        return;
+    
+    for(int i =0; i< node->game.developers.size(); i++){
+
+            if(dev==node->game.developers[i]){
+                cout<<node->game.developers[i];
+            }
+    }
+    searchDevHelper(node->left, dev);
+    searchDevHelper(node->right, dev);
+    
+}
+
+// Search for node with a particular id
+void AVLTree::searchDev(string Dev) {
+    searchDevHelper(root, Dev);
+}
+
+
 
 // Helper function for nameSearchHelper(); create a string that pads leading 0's up to 8 digits
 std::string AVLTree::toIdString(int& id) {
@@ -229,7 +251,7 @@ void AVLTree::inorderHelper(Node* node, std::string& nameList) {
 }
 
 // Inorder traversal; cleans up raw string from helper and prints
-void AVLTree::printInorder() {
+void AVLTree:: printInorder() {
     std::string nameList = "";
     inorderHelper(root, nameList);
     if (root != nullptr)
@@ -287,7 +309,7 @@ void AVLTree::printLevelCount() {
 }
 
 
-// Helper function for removeInorder; uses an inorder traversal until n is found to delete it
+// test Helper function for removeInorder; uses an inorder traversal until n is found to delete it
 Node* AVLTree::removeInorderHelper(Node* node, int& i, int& n) {
     if (node == nullptr || i > n)
         return node;

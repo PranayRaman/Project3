@@ -56,6 +56,9 @@ class AVLTree {
     void search(int id);
     void search(std::string name);
 
+    void searchDev(string dev);
+    void searchDevHelper(Node* node, string& dev);
+
     void printInorder();
     void printPreorder();
     void printPostorder();

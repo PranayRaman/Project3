@@ -24,9 +24,12 @@ int main() {
     t.stop();
     cout << "Loading Map took " << t.time() << " sec." << endl;
 
+    t.start();
     AVLTree tree;
     for (auto g : games)
         tree.insert(g, g.id);
+    t.stop();
+    cout << "Loading Tree took " << t.time() << " sec." << endl;
 
     //Terminal Size Info
 
