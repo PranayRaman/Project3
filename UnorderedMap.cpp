@@ -115,17 +115,6 @@ vector<Game> UnorderedMap::searchDeveloper(string dev) {
 }
 
 
-
-// Search for longest played games
-// Returns vector of top 20 longest played games
-vector<Game> UnorderedMap::getLongestPlayed() {
-    // TODO
-    return vector<Game>();
-}
-
-// TODO: the otha one
-
-
 // Search for game. If not found, create Game object and store.
 // Returns reference to target Game
 Game& UnorderedMap::operator[](int id) {
@@ -134,7 +123,7 @@ Game& UnorderedMap::operator[](int id) {
     Game newGame;
     newGame.id = id;
     insert(newGame);
-    return at(id);    
+    return at(id);
 }
 
 // Search for game. If not found, throw out_of_range exception
