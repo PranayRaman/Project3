@@ -309,7 +309,7 @@ void AVLTree::printLevelCount() {
 }
 
 
-// Helper function for removeInorder; uses an inorder traversal until n is found to delete it
+// test Helper function for removeInorder; uses an inorder traversal until n is found to delete it
 Node* AVLTree::removeInorderHelper(Node* node, int& i, int& n) {
     if (node == nullptr || i > n)
         return node;
