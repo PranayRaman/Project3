@@ -168,7 +168,6 @@ int main() {
         }
 
         if(q1c2){   //if q1 choice 2, search by name
-//FIXME compare search results, print out if they match. Results should be found by looping in vector, returned from AVL, returned from MAP
             cout << "|              Enter a Name: ";
             cin.ignore();
             getline(cin, userInput);
@@ -225,7 +224,6 @@ int main() {
         }
 
         if(q1c3) { //Search by developer
-//FIXME compare search results, print out if they match. Results should be found by looping in vector, returned from AVL, returned from MAP
             cout << "|              Enter a Developer: ";
             cin.ignore();
             getline(cin, userInput);
@@ -273,19 +271,26 @@ int main() {
             p.printSpaces(78-(49+time.length()));
             cout << "|\n";
 
-            //print the Game information
+            //print the list of Games
+            string gameName = "";
             if(gamesDev1.size()==gamesDev2.size() && gamesDev2.size()==gamesDev3.size())
                 for(int i = 0; i < gamesDev2.size(); i++){
-                    // TODO: return list of names of games instead
+                    gameName = gamesDev2[i].name;
+                    cout << "|              " << gameName;
+                    p.printSpaces(78-(15+gameName.length()));
+                    cout << "|\n";
                 }
             else {
-                // TODO: print vectors don't match! sus!
+                cout << "The vectors don't match! Recording ruined!" << endl;
             }
 
             q1c3 = false;
         }
 
+        // Don't move on until user hits Enter
         answered = true;
+        cout << "|    Press ENTER to continue your gaming search ...";
+        cin.ignore();
     }
 
     return 0;
