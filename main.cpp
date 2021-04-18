@@ -110,6 +110,7 @@ int main() {
         answered = true;
 
         if(q1c1){   //if search by ID
+//FIXME compare search results, print out if they match. Results should be found by looping in vector, returned from AVL, returned from MAP
             cout << "|              Enter an ID number:                                            |\n";
             cin >> userInput;
             if(userInput == "exit" || userInput == "Exit"){
@@ -164,6 +165,7 @@ int main() {
         }
 
         if(q1c2){   //if q1 choice 2, search by name
+//FIXME compare search results, print out if they match. Results should be found by looping in vector, returned from AVL, returned from MAP
             cout << "|              Enter a Name:                                                  |\n";
             cin >> userInput;
             if(userInput == "exit" || userInput == "Exit"){
@@ -217,7 +219,8 @@ int main() {
             q1c2 = false;
         }
 
-        if(q1c3) {
+        if(q1c3) { //Search by developer
+//FIXME compare search results, print out if they match. Results should be found by looping in vector, returned from AVL, returned from MAP
             cout << "|              Enter a Developer:                                             |\n";
             cin >> userInput;
             if(userInput == "exit" || userInput == "Exit"){
@@ -227,6 +230,7 @@ int main() {
             cout << "|              Searching by Developer ...                                     |\n";
             vector<Game> gamesDev;
             vector<Game> gamesDev2;
+
             // searching vector
             t.start();
             for(int i = 0; i < games.size(); i++){
@@ -268,6 +272,8 @@ int main() {
             p.printSpaces(78-(52+time.length()));
             cout << "|\n";
 
+//FIXME printing all the games from a Developer is not working
+//use <Game>.printInfo() to print the games
             //print the Game information
             for(int i = 0; i < gamesDev.size(); i++){
                 gamesDev2[i].printInfo();
