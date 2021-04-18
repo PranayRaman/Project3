@@ -223,7 +223,8 @@ int main() {
         if(q1c3) { //Search by developer
 //FIXME compare search results, print out if they match. Results should be found by looping in vector, returned from AVL, returned from MAP
             cout << "|              Enter a Developer: ";
-            cin >> userInput;
+            cin.ignore();
+            getline(cin, userInput);
             if(userInput == "exit" || userInput == "Exit"){
                 loopMenu = false;
                 break;
