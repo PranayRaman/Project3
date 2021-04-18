@@ -30,10 +30,10 @@ int main() {
             "|                               Know Your Game                                |\n"
             "|-----------------------------------------------------------------------------|\n"
             "|                                                                             |\n"
-            "|    Get to know about the game ID, Name, Developers, Genres, Platforms,      |\n"
-            "|    Release Date, Rating, Playtime and Achievement Count!                    |\n"
+            "|         How do others rate it? How long does it take to complete?           |\n"
+            "|     What other games did this developer make? Find out these and more!      |\n"
             "|                                                                             |\n"
-            "|-----------------------------------------------------------------------------|\n"
+            "|                                                                             |\n"
             "|                    To exit the program at any time type:                    |\n"
             "|                            exit     or     Exit                             |\n"
             "|-----------------------------------------------------------------------------|\n"
@@ -81,7 +81,7 @@ int main() {
                 "|              4. Exit Program                                                |\n"
                 "|                                                                             |\n";
         do{
-            cout << "|              Enter your choice:                                             |\n";
+            cout << "|              Enter your choice: ";
             cin >> q1;
             if(q1 == "1"){
                 q1c1 = true;
@@ -111,7 +111,7 @@ int main() {
 
         if(q1c1){   //if search by ID
 //FIXME compare search results, print out if they match. Results should be found by looping in vector, returned from AVL, returned from MAP
-            cout << "|              Enter an ID number:                                            |\n";
+            cout << "|              Enter an ID number: ";
             cin >> userInput;
             if(userInput == "exit" || userInput == "Exit"){
                 loopMenu = false;
@@ -131,8 +131,8 @@ int main() {
                 time = "< 0.001 s";
             else
                 time = to_string(t.time()) + " s";
-            cout << "|              Time for Vector ID Search is: "<< time;
-            p.printSpaces(78-(45+time.length()));
+            cout << "|              Time for Vector Search is: " << time;
+            p.printSpaces(78-(42+time.length()));
             cout << "|\n";
 
             //searching tree
@@ -143,8 +143,8 @@ int main() {
                 time = "< 0.001 s";
             else
                 time = to_string(t.time()) + " s";
-            cout << "|              Time for AVL Tree ID Search is: " << time;
-            p.printSpaces(78-(47+time.length()));
+            cout << "|              Time for AVL Tree Search is: " << time;
+            p.printSpaces(78-(44+time.length()));
             cout << "|\n";
 
             //searching map
@@ -155,8 +155,8 @@ int main() {
                 time = "< 0.001 s";
             else
                 time = to_string(t.time()) + " s";
-            cout << "|              Time for Unordered Map ID Search is: " << time;
-            p.printSpaces(78-(52+time.length()));
+            cout << "|              Time for Unordered Map Search is: " << time;
+            p.printSpaces(78-(49+time.length()));
             cout << "|\n";
 
             //print the Game information
@@ -166,8 +166,9 @@ int main() {
 
         if(q1c2){   //if q1 choice 2, search by name
 //FIXME compare search results, print out if they match. Results should be found by looping in vector, returned from AVL, returned from MAP
-            cout << "|              Enter a Name:                                                  |\n";
-            cin >> userInput;
+            cout << "|              Enter a Name: ";
+            cin.ignore();
+            getline(cin, userInput);
             if(userInput == "exit" || userInput == "Exit"){
                 loopMenu = false;
                 break;
@@ -186,8 +187,8 @@ int main() {
                 time = "< 0.001 s";
             else
                 time = to_string(t.time()) + " s";
-            cout << "|              Time for Vector Name Search is: " << time;
-            p.printSpaces(78-(47+time.length()));
+            cout << "|              Time for Vector Search is: " << time;
+            p.printSpaces(78-(42+time.length()));
             cout << "|\n";
 
             //searching tree
@@ -198,8 +199,8 @@ int main() {
                 time = "< 0.001 s";
             else
                 time = to_string(t.time()) + " s";
-            cout << "|              Time for AVL Tree Name Search is: " << time;
-            p.printSpaces(78-(49+time.length()));
+            cout << "|              Time for AVL Tree Search is: " << time;
+            p.printSpaces(78-(44+time.length()));
             cout << "|\n";
 
             //searching map
@@ -210,8 +211,8 @@ int main() {
                 time = "< 0.001 s";
             else
                 time = to_string(t.time()) + " s";
-            cout << "|              Time for Unordered Map Name Search is: " << time;
-            p.printSpaces(78-(54+time.length()));
+            cout << "|              Time for Unordered Map Search is: " << time;
+            p.printSpaces(78-(49+time.length()));
             cout << "|\n";
 
             //print the Game information
@@ -221,7 +222,7 @@ int main() {
 
         if(q1c3) { //Search by developer
 //FIXME compare search results, print out if they match. Results should be found by looping in vector, returned from AVL, returned from MAP
-            cout << "|              Enter a Developer:                                             |\n";
+            cout << "|              Enter a Developer: ";
             cin >> userInput;
             if(userInput == "exit" || userInput == "Exit"){
                 loopMenu = false;
@@ -244,8 +245,8 @@ int main() {
                 time = "< 0.001 s";
             else
                 time = to_string(t.time()) + " s";
-            cout << "|              Time for Vector ID Search is: " << time;
-            p.printSpaces(78-(45+time.length()));
+            cout << "|              Time for Vector Search is: " << time;
+            p.printSpaces(78-(42+time.length()));
             cout << "|\n";
 
             //searching tree
@@ -256,8 +257,8 @@ int main() {
                 time = "< 0.001 s";
             else
                 time = to_string(t.time()) + " s";
-            cout << "|              Time for AVL Tree ID Search is: " << time;
-            p.printSpaces(78-(47+time.length()));
+            cout << "|              Time for AVL Tree Search is: " << time;
+            p.printSpaces(78-(44+time.length()));
             cout << "|\n";
 
             //searching map
@@ -268,8 +269,8 @@ int main() {
                 time = "< 0.001 s";
             else
                 time = to_string(t.time()) + " s";
-            cout << "|              Time for Unordered Map ID Search is: " << time;
-            p.printSpaces(78-(52+time.length()));
+            cout << "|              Time for Unordered Map Search is: " << time;
+            p.printSpaces(78-(49+time.length()));
             cout << "|\n";
 
 //FIXME printing all the games from a Developer is not working

@@ -50,20 +50,22 @@ void Game::printInfo(){
     string ratingstring = "";
     if(rating == 0)
         ratingstring = "N/A";
-    else
+    else {
         ratingstring = std::to_string(rating);
+        ratingstring = ratingstring.substr(0,4) + " / 5.00";
+    }
     //playtime string
     string playtimestring = "";
     if(playtime == 0)
-        playtimestring =  "N/A";
+        playtimestring = "We're not sure!";
     else
-        playtimestring = std::to_string(playtime);
+        playtimestring = std::to_string(playtime) + " hours to complete";
     //achievementcount string
     string achievementcountstring = "";
     if(achievementCount == 0)
-        achievementcountstring =  "N/A";
+        achievementcountstring = "None";
     else
-        achievementcountstring = std::to_string(achievementCount);
+        achievementcountstring = std::to_string(achievementCount) + "achievements to get!";
     cout << "|-----------------------------------------------------------------------------|\n";
     cout << "|              Here's the game you are looking for!                           |\n";
     cout << "|                                                                             |\n";
