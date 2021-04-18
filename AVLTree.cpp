@@ -160,14 +160,14 @@ void AVLTree::remove(int id) {
 
 
 // Helper function for search(id); iterate with recursion to find node
-int AVLTree::searchHelper(Node* node, int& id) {
+Game AVLTree::searchHelper(Node* node, int& id) {
     if (node == nullptr) {
         //std::cout << "unsuccessful" << std::endl;
-        return;
+        return Game();
     }
 
     else if (id == node->id)
-        return node->id;
+        return node->game;
     else if (id > node->id)
         return searchHelper(node->right, id);
     else
@@ -175,8 +175,8 @@ int AVLTree::searchHelper(Node* node, int& id) {
 }
 
 // Search for node with a particular id
-int AVLTree::search(int id) {
-    searchHelper(root, id);
+Game AVLTree::search(int id) {
+    return searchHelper(root, id);
 }
 
 //Searching for Developer
@@ -187,7 +187,7 @@ void AVLTree::searchDevHelper(Node* node, string& dev,vector<Game> &games) {
     for(int i =0; i< node->game.developers.size(); i++){
 
             if(dev==node->game.developers[i]){
-             games.push_back(node->game);
+                games.push_back(node->game);
             }
     }
     searchDevHelper(node->left, dev, games);
@@ -199,6 +199,7 @@ void AVLTree::searchDevHelper(Node* node, string& dev,vector<Game> &games) {
 vector<Game> AVLTree::searchDev(string Dev) {
      vector<Game> games;
     searchDevHelper(root, Dev, games);
+    return games;
 }
 
 
@@ -218,29 +219,25 @@ std::string AVLTree::toIdString(int& id) {
 }
 
 // Helper function for search(name); use preorder traversal and print name each time it matches
-Node* AVLTree::nameSearchHelper(Node* node, std::string& name, std::string& idList) {
+void AVLTree::nameSearchHelper(Node* node, std::string& name, Game& game) {
     if (node == nullptr)
         return;
     
     if (node->game.name == name) {
-        idList += toIdString(node->id) + '\n';
+        game = node->game;
+        return;
     }
     
-    nameSearchHelper(node->left, name, idList);
-    nameSearchHelper(node->right, name, idList);
+    nameSearchHelper(node->left, name, game);
+    nameSearchHelper(node->right, name, game);
 }
 
 // Search for node with a particular name
 // Not sorted by name, so will have to check EVERY node (using preorder traversal)
-string AVLTree::search(std::string name) {
-    std::string idList = "";
-    nameSearchHelper(root, name, idList);
-
-    if (idList != "")
-       return idList;
-    else 
-        //std::cout << "unsuccessful" << std::endl;
-        return ;
+Game AVLTree::search(std::string name) {
+    Game game;
+    nameSearchHelper(root, name, game);
+    return game;
 }
 
 

@@ -124,54 +124,46 @@ int main() {
             // searching vector
             t.start();
             for(int i = 0; i < games.size(); i++){
-                if (games[i].id == stoi(userInput))
+                if (games[i].id == stoi(userInput)) {
                     temp1 = games[i];
                     break;
+                }
             }
             t.stop();
-            if(t.time() == 0)
-                time = "< 0.001 s";
-            else
-                time = to_string(t.time()) + " s";
+            time = to_string(t.time()) + " s";
+            
             cout << "|              Time for Vector Search is: " << time;
             p.printSpaces(78-(42+time.length()));
             cout << "|\n";
 
             //searching tree
             t.start();
-           temp1= tree.search(stoi(userInput));
+            temp2= tree.search(stoi(userInput));
             t.stop();
-            if(t.time() == 0)
-                time = "< 0.001 s";
-            else
-                time = to_string(t.time()) + " s";
+            time = to_string(t.time()) + " s";
+            
             cout << "|              Time for AVL Tree Search is: " << time;
             p.printSpaces(78-(44+time.length()));
             cout << "|\n";
 
             //searching map
             t.start();
-            temp2 = map.searchId(stoi(userInput));
+            temp3 = map.searchId(stoi(userInput));
             t.stop();
-            if(t.time() == 0)
-                time = "< 0.001 s";
-            else
-                time = to_string(t.time()) + " s";
+            time = to_string(t.time()) + " s";
+            
             cout << "|              Time for Unordered Map Search is: " << time;
             p.printSpaces(78-(49+time.length()));
             cout << "|\n";
 
             //print the Game information
-            temp.printInfo();
+            temp1.printInfo();
             q1c1 = false;
 
 
             //results
-            if(temp1.id==temp2.id && temp2.id==temp3.id){
-                cout<<"ID: "<< temp.id;
-            }else{
-                cout<< "Results do not match";
-            }
+            if(temp1.id!=temp2.id || temp2.id!=temp3.id)
+                cout<< "Results do not match! (This is bad)";
 
         }
 
@@ -191,15 +183,14 @@ int main() {
             // searching vector
             t.start();
             for(int i = 0; i < games.size(); i++){
-                if (games[i].name == userInput)
+                if (games[i].name == userInput) {
                     temp1 = games[i];
                     break;
+                }
             }
             t.stop();
-            if(t.time() == 0)
-                time = "< 0.001 s";
-            else
-                time = to_string(t.time()) + " s";
+            time = to_string(t.time()) + " s";
+            
             cout << "|              Time for Vector Search is: " << time;
             p.printSpaces(78-(42+time.length()));
             cout << "|\n";
@@ -208,10 +199,8 @@ int main() {
             t.start();
             temp2=tree.search(userInput);
             t.stop();
-            if(t.time() == 0)
-                time = "< 0.001 s";
-            else
-                time = to_string(t.time()) + " s";
+            time = to_string(t.time()) + " s";
+            
             cout << "|              Time for AVL Tree Search is: " << time;
             p.printSpaces(78-(44+time.length()));
             cout << "|\n";
@@ -220,10 +209,8 @@ int main() {
             t.start();
             temp3 = map.searchName(userInput);
             t.stop();
-            if(t.time() == 0)
-                time = "< 0.001 s";
-            else
-                time = to_string(t.time()) + " s";
+            time = to_string(t.time()) + " s";
+            
             cout << "|              Time for Unordered Map Search is: " << time;
             p.printSpaces(78-(49+time.length()));
             cout << "|\n";
@@ -232,12 +219,9 @@ int main() {
             temp1.printInfo();
             q1c2 = false;
 
-             //results
-            if(temp1.id==temp2.id && temp2.id==temp3.id){
-                cout<<"Name: "<< temp.name;
-            }else{
-                cout<< "Results do not match";
-            }
+            //results
+            if(temp1.id!=temp2.id || temp2.id!=temp3.id)
+                cout<< "Results do not match! (This is bad)";
         }
 
         if(q1c3) { //Search by developer
@@ -250,59 +234,55 @@ int main() {
                 break;
             }
             cout << "|              Searching by Developer ...                                     |\n";
-            vector<Game> gamesDev;
+            vector<Game> gamesDev1;
             vector<Game> gamesDev2;
+            vector<Game> gamesDev3;
 
             // searching vector
             t.start();
             for(int i = 0; i < games.size(); i++){
                 for(int j = 0; j < games[i].developers.size(); j++){
                     if(games[i].developers[j] == userInput)
-                        gamesDev.push_back(games[i]);
+                        gamesDev1.push_back(games[i]);
                 }
             }
             t.stop();
-            if(t.time() == 0)
-                time = "< 0.001 s";
-            else
-                time = to_string(t.time()) + " s";
+            time = to_string(t.time()) + " s";
+            
             cout << "|              Time for Vector Search is: " << time;
             p.printSpaces(78-(42+time.length()));
             cout << "|\n";
 
             //searching tree
             t.start();
-           gamesDev= tree.searchDev(userInput);
+            gamesDev2 = tree.searchDev(userInput);
             t.stop();
-            if(t.time() == 0)
-                time = "< 0.001 s";
-            else
-                time = to_string(t.time()) + " s";
+            time = to_string(t.time()) + " s";
+
             cout << "|              Time for AVL Tree Search is: " << time;
             p.printSpaces(78-(44+time.length()));
             cout << "|\n";
 
             //searching map
             t.start();
-            gamesDev2 = map.searchDeveloper(userInput);
+            gamesDev3 = map.searchDeveloper(userInput);
             t.stop();
-            if(t.time() == 0)
-                time = "< 0.001 s";
-            else
-                time = to_string(t.time()) + " s";
+            time = to_string(t.time()) + " s";
+
             cout << "|              Time for Unordered Map Search is: " << time;
             p.printSpaces(78-(49+time.length()));
             cout << "|\n";
 
-//FIXME printing all the games from a Developer is not working
-//use <Game>.printInfo() to print the games
             //print the Game information
-            if(gamesDev.size()==gamesDev2.size()){
-            for(int i = 0; i < gamesDev.size(); i++){
-                gamesDev2[i].printInfo();
+            if(gamesDev1.size()==gamesDev2.size() && gamesDev2.size()==gamesDev3.size())
+                for(int i = 0; i < gamesDev2.size(); i++){
+                    // TODO: return list of names of games instead
+                }
+            else {
+                // TODO: print vectors don't match! sus!
             }
+
             q1c3 = false;
-        }
         }
 
         answered = true;

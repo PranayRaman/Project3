@@ -37,8 +37,9 @@ class AVLTree {
     // RECURSIVE HELPER FUNCTIONS
     Node* insertHelper(Node* node, Game& game, int& id);
     Node* removeHelper(Node* node, int& id, bool firstPass);
-    int searchHelper(Node* node, int& id);
-    Node* nameSearchHelper(Node* node, std::string& name, std::string& idList);
+    Game searchHelper(Node* node, int& id);
+    void nameSearchHelper(Node* node, std::string& name, Game& game);
+    void searchDevHelper(Node* node, string& dev,vector<Game>& games);
     void inorderHelper(Node* node, std::string& name);
     void preorderHelper(Node* node, std::string& name);
     void postorderHelper(Node* node,std::string& name);
@@ -53,11 +54,10 @@ class AVLTree {
     public:
     void insert(Game& game, int id);
     void remove(int id);
-    int search(int id);
-    string search(std::string name);
+    Game search(int id);
+    Game search(std::string name);
 
     vector<Game> searchDev(string dev);
-    void searchDevHelper(Node* node, string& dev,vector<Game>& games);
 
     void printInorder();
     void printPreorder();
