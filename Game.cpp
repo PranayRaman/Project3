@@ -15,7 +15,7 @@ Game::Game(int id_, string name_, vector<string> developers_, vector<string> gen
 void Game::printInfo(){
     if(id == 0){
         cout << "|-----------------------------------------------------------------------------|\n";
-        cout << "|              Uh Oh! This Game does not exist! :(                            |\n";
+        cout << "|                     Uh Oh! This Game does not exist! :(                     |\n";
         cout << "|-----------------------------------------------------------------------------|\n";
     }
     else{
