@@ -23,7 +23,9 @@ int main() {
     bool q1c3 = false;  //q1 choice 3
     string userInput;   //input for search
     string time = "";   //for printing search time
-    Game temp;          //for finding in vector
+    Game temp1;          //for finding in vector
+    Game temp2;
+    Game temp3;
 
     //text output begins
     cout << "|-----------------------------------------------------------------------------|\n"
@@ -123,7 +125,7 @@ int main() {
             t.start();
             for(int i = 0; i < games.size(); i++){
                 if (games[i].id == stoi(userInput))
-                    temp = games[i];
+                    temp1 = games[i];
                     break;
             }
             t.stop();
@@ -137,7 +139,7 @@ int main() {
 
             //searching tree
             t.start();
-            tree.search(stoi(userInput));
+           temp1= tree.search(stoi(userInput));
             t.stop();
             if(t.time() == 0)
                 time = "< 0.001 s";
@@ -149,7 +151,7 @@ int main() {
 
             //searching map
             t.start();
-            temp = map.searchId(stoi(userInput));
+            temp2 = map.searchId(stoi(userInput));
             t.stop();
             if(t.time() == 0)
                 time = "< 0.001 s";
@@ -162,6 +164,15 @@ int main() {
             //print the Game information
             temp.printInfo();
             q1c1 = false;
+
+
+            //results
+            if(temp1.id==temp2.id && temp2.id==temp3.id){
+                cout<<"ID: "<< temp.id;
+            }else{
+                cout<< "Results do not match";
+            }
+
         }
 
         if(q1c2){   //if q1 choice 2, search by name
@@ -175,11 +186,13 @@ int main() {
             }
             cout << "|              Searching by Name ...                                          |\n";
             
+            // Results
+
             // searching vector
             t.start();
             for(int i = 0; i < games.size(); i++){
                 if (games[i].name == userInput)
-                    temp = games[i];
+                    temp1 = games[i];
                     break;
             }
             t.stop();
@@ -193,7 +206,7 @@ int main() {
 
             //searching tree
             t.start();
-            tree.search(userInput);
+            temp2=tree.search(userInput);
             t.stop();
             if(t.time() == 0)
                 time = "< 0.001 s";
@@ -205,7 +218,7 @@ int main() {
 
             //searching map
             t.start();
-            temp = map.searchName(userInput);
+            temp3 = map.searchName(userInput);
             t.stop();
             if(t.time() == 0)
                 time = "< 0.001 s";
@@ -216,8 +229,15 @@ int main() {
             cout << "|\n";
 
             //print the Game information
-            temp.printInfo();
+            temp1.printInfo();
             q1c2 = false;
+
+             //results
+            if(temp1.id==temp2.id && temp2.id==temp3.id){
+                cout<<"Name: "<< temp.name;
+            }else{
+                cout<< "Results do not match";
+            }
         }
 
         if(q1c3) { //Search by developer
@@ -251,7 +271,7 @@ int main() {
 
             //searching tree
             t.start();
-            tree.searchDev(userInput);
+           gamesDev= tree.searchDev(userInput);
             t.stop();
             if(t.time() == 0)
                 time = "< 0.001 s";
@@ -276,10 +296,12 @@ int main() {
 //FIXME printing all the games from a Developer is not working
 //use <Game>.printInfo() to print the games
             //print the Game information
+            if(gamesDev.size()==gamesDev2.size()){
             for(int i = 0; i < gamesDev.size(); i++){
                 gamesDev2[i].printInfo();
             }
             q1c3 = false;
+        }
         }
 
         answered = true;
@@ -287,3 +309,4 @@ int main() {
 
     return 0;
 }
+

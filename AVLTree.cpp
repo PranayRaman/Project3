@@ -160,15 +160,14 @@ void AVLTree::remove(int id) {
 
 
 // Helper function for search(id); iterate with recursion to find node
-void AVLTree::searchHelper(Node* node, int& id) {
+int AVLTree::searchHelper(Node* node, int& id) {
     if (node == nullptr) {
         //std::cout << "unsuccessful" << std::endl;
         return;
     }
 
     else if (id == node->id)
-        //std::cout << node->game.name << std::endl;
-        return;
+        return node->id;
     else if (id > node->id)
         return searchHelper(node->right, id);
     else
@@ -176,29 +175,30 @@ void AVLTree::searchHelper(Node* node, int& id) {
 }
 
 // Search for node with a particular id
-void AVLTree::search(int id) {
+int AVLTree::search(int id) {
     searchHelper(root, id);
 }
 
 //Searching for Developer
-void AVLTree::searchDevHelper(Node* node, string& dev) {
+void AVLTree::searchDevHelper(Node* node, string& dev,vector<Game> &games) {
     if (node == nullptr)
         return;
     
     for(int i =0; i< node->game.developers.size(); i++){
 
             if(dev==node->game.developers[i]){
-                cout<<node->game.developers[i];
+             games.push_back(node->game);
             }
     }
-    searchDevHelper(node->left, dev);
-    searchDevHelper(node->right, dev);
+    searchDevHelper(node->left, dev, games);
+    searchDevHelper(node->right, dev, games);
     
 }
 
 // Search for node with a particular id
-void AVLTree::searchDev(string Dev) {
-    searchDevHelper(root, Dev);
+vector<Game> AVLTree::searchDev(string Dev) {
+     vector<Game> games;
+    searchDevHelper(root, Dev, games);
 }
 
 
@@ -218,7 +218,7 @@ std::string AVLTree::toIdString(int& id) {
 }
 
 // Helper function for search(name); use preorder traversal and print name each time it matches
-void AVLTree::nameSearchHelper(Node* node, std::string& name, std::string& idList) {
+Node* AVLTree::nameSearchHelper(Node* node, std::string& name, std::string& idList) {
     if (node == nullptr)
         return;
     
@@ -232,15 +232,15 @@ void AVLTree::nameSearchHelper(Node* node, std::string& name, std::string& idLis
 
 // Search for node with a particular name
 // Not sorted by name, so will have to check EVERY node (using preorder traversal)
-void AVLTree::search(std::string name) {
+string AVLTree::search(std::string name) {
     std::string idList = "";
     nameSearchHelper(root, name, idList);
 
     if (idList != "")
-        std::cout << idList;
+       return idList;
     else 
         //std::cout << "unsuccessful" << std::endl;
-        return;
+        return ;
 }
 
 
