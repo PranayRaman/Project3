@@ -88,5 +88,5 @@ void Game::printInfo(){
     p.printSpaces(78-(25+playtimestring.length())); cout << "|\n";
     cout << "|              Achievement Count: " << achievementcountstring;
     p.printSpaces(78-(34+achievementcountstring.length())); cout << "|\n";
-    cout << "|-----------------------------------------------------------------------------|\n" << endl;
+    cout << "|-----------------------------------------------------------------------------|\n";
 }
