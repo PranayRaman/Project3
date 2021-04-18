@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Parsing.h"
 Game::Game(int id_, string name_, vector<string> developers_, vector<string> genres_, vector<string> platforms_, string releaseDate_, double rating_, int playtime_, int achievementCount){
     id =  id_;
     name =  name_;
@@ -12,46 +13,78 @@ Game::Game(int id_, string name_, vector<string> developers_, vector<string> gen
 }
 
 void Game::printInfo(){
-    cout << "ID: " << id << endl;
-    cout << "Name: " << name << endl;
-    cout << "Developers: ";
-    for (int i = 0; i < developers.size(); i++){
-        if(i != developers.size() -1)
-            cout << developers[i] << ", ";
+    Parsing p;
+    //id string
+    string idstring = std::to_string(id);
+    //developers string
+    string developersstring = "";
+    if(developers.empty())
+        developersstring = "N/A";
+    for(int i = 0; i < developers.size(); i++){
+        if(i != developers.size() - 1)
+            developersstring += developers[i] + ", ";
         else
-            cout << developers[i] << endl;
+            developersstring += developers[i];
     }
-    cout << "Genres: ";
+    //genres string
+    string genresstring = "";
     if(genres.empty())
-        cout << "?" << endl;
+        genresstring = "N/A";
     for (int i = 0; i < genres.size(); i++){
         if(i != genres.size() -1)
-            cout << genres[i] << ", ";
+            genresstring += genres[i] + ", ";
         else
-            cout << genres[i] << endl;;
+            genresstring += genres[i];
     }
-    cout << "Platforms: ";
+    //platforms string
+    string platformsstring = "";
+    if(platforms.empty())
+        platformsstring = "?";
     for (int i = 0; i < platforms.size(); i++){
         if(i != platforms.size() -1)
-            cout << platforms[i] << ", ";
+            platformsstring += platforms[i] + ", ";
         else
-            cout << platforms[i] << endl;;
+            platformsstring += platforms[i];
     }
-    cout << "Release Date: " << releaseDate << endl;
-    cout << "Rating: ";
+    //rating string
+    string ratingstring = "";
     if(rating == 0)
-        cout << "N/A" << endl;
+        ratingstring = "N/A";
     else
-        cout << rating << endl;
-    cout << "Playtime: ";
+        ratingstring = std::to_string(rating);
+    //playtime string
+    string playtimestring = "";
     if(playtime == 0)
-        cout << "?" << endl;
+        playtimestring =  "N/A";
     else
-        cout << playtime << endl;
-    cout << "Achievement Count: ";
+        playtimestring = std::to_string(playtime);
+    //achievementcount string
+    string achievementcountstring = "";
     if(achievementCount == 0)
-        cout << "N/A" << endl;
+        achievementcountstring =  "N/A";
     else
-        cout << achievementCount << endl;
-    cout << "-----------------------------------" << endl;
+        achievementcountstring = std::to_string(achievementCount);
+    cout << "|-----------------------------------------------------------------------------|\n";
+    cout << "|              Here's the game you are looking for!                           |\n";
+    cout << "|                                                                             |\n";
+    cout << "|              Get to \"Know Your Game\"!!!                                     |\n";
+    cout << "|              ID: " << idstring;
+    p.printSpaces(78-(19+idstring.length())); cout << "|\n";
+    cout << "|              Name: " << name;
+    p.printSpaces(78-(21+name.length())); cout << "|\n";
+    cout << "|              Developers: " << developersstring;
+    p.printSpaces(78-(27+developersstring.length())); cout << "|\n";
+    cout << "|              Genres: " << genresstring;
+    p.printSpaces(78-(23+genresstring.length())); cout << "|\n";
+    cout << "|              Platforms: "<< platformsstring;
+    p.printSpaces(78-(26+platformsstring.length())); cout << "|\n";
+    cout << "|              Release Date: " << releaseDate;
+    p.printSpaces(78-(29+releaseDate.length())); cout << "|\n";
+    cout << "|              Rating: " << ratingstring;
+    p.printSpaces(78-(23+ratingstring.length())); cout << "|\n";
+    cout << "|              Playtime: " << playtimestring;
+    p.printSpaces(78-(25+playtimestring.length())); cout << "|\n";
+    cout << "|              Achievement Count: " << achievementcountstring;
+    p.printSpaces(78-(34+achievementcountstring.length())); cout << "|\n";
+    cout << "|-----------------------------------------------------------------------------|\n" << endl;
 }

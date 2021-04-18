@@ -10,5 +10,10 @@ class Parsing{ //john do you want to search by all of these?
     string q1options = 
     "1. Search by ID\n"
     "2. Search by name\n";
-    
+public:
+    void printSpaces(int n){
+        for(int i = 0; i < n; i++){
+            cout << " ";
+        }
+    }
 };

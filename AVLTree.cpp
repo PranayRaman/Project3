@@ -82,7 +82,7 @@ Node* AVLTree::balance(Node* node) {
 // Helper function for insert(); iterate with recursion to insert node
 Node* AVLTree::insertHelper(Node* node, Game& game, int& id) {
     if (node == nullptr) {
-        std::cout << "successful" << std::endl;
+        //std::cout << "successful" << std::endl;
         return new Node(game, id);
     }
 
@@ -91,8 +91,8 @@ Node* AVLTree::insertHelper(Node* node, Game& game, int& id) {
         node->right = insertHelper(node->right, game, id);
     else if (id < node->id)
         node->left = insertHelper(node->left, game, id);
-    else 
-        std::cout << "unsuccessful" << std::endl;
+    //else 
+        //std::cout << "unsuccessful" << std::endl;
 
     // Update heights
     updateHeight(node);
@@ -115,7 +115,7 @@ void AVLTree::insert(Game& game, int id) {
 // *Source: Amanpreet Kapoor - Binary Search Trees Powerpoint (trees-2.pdf, slide 13)
 Node* AVLTree::removeHelper(Node* node, int& id, bool firstPass) {
     if (node == nullptr) {
-        std::cout << "unsuccessful" << std::endl;
+        //std::cout << "unsuccessful" << std::endl;
         return node;
     }
 
@@ -124,7 +124,8 @@ Node* AVLTree::removeHelper(Node* node, int& id, bool firstPass) {
     else if (id < node->id)
         node->left = removeHelper(node->left, id, firstPass);
     else {                                                      // Found node to delete; handle based on # children
-        if (firstPass) std::cout << "successful" << std::endl;
+        //if (firstPass) 
+            //std::cout << "successful" << std::endl;
         Node* temp = nullptr;
         if (node->left == nullptr) {                 // 1 child (left) or 0 children
             temp = node->right;                         // Delete node and replace with child
@@ -161,11 +162,13 @@ void AVLTree::remove(int id) {
 // Helper function for search(id); iterate with recursion to find node
 void AVLTree::searchHelper(Node* node, int& id) {
     if (node == nullptr) {
-        std::cout << "unsuccessful" << std::endl;
+        //std::cout << "unsuccessful" << std::endl;
+        return;
     }
 
     else if (id == node->id)
-        std::cout << node->game.name << std::endl;
+        //std::cout << node->game.name << std::endl;
+        return;
     else if (id > node->id)
         return searchHelper(node->right, id);
     else
@@ -235,7 +238,9 @@ void AVLTree::search(std::string name) {
 
     if (idList != "")
         std::cout << idList;
-    else std::cout << "unsuccessful" << std::endl;
+    else 
+        //std::cout << "unsuccessful" << std::endl;
+        return;
 }
 
 
