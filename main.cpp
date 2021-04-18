@@ -112,7 +112,6 @@ int main() {
         answered = true;
 
         if(q1c1){   //if search by ID
-//FIXME compare search results, print out if they match. Results should be found by looping in vector, returned from AVL, returned from MAP
             cout << "|              Enter an ID number: ";
             cin >> userInput;
             if(userInput == "exit" || userInput == "Exit"){
@@ -231,7 +230,10 @@ int main() {
                 loopMenu = false;
                 break;
             }
+            cout << p.blankline;
+            cout << p.line;
             cout << "|              Searching by Developer ...                                     |\n";
+            cout << p.line;
             vector<Game> gamesDev1;
             vector<Game> gamesDev2;
             vector<Game> gamesDev3;
@@ -270,14 +272,24 @@ int main() {
             cout << "|              Time for Unordered Map Search is: " << time;
             p.printSpaces(78-(49+time.length()));
             cout << "|\n";
+            cout << p.line;
+           
+            //print the name of developer before listing games 
+            cout << p.blankline;
+            cout << "|              Games by: " << userInput;
+            p.printSpaces(78-(25+userInput.length())); 
+            cout <<"|\n";
+            cout <<p.blankline;
+
+            
 
             //print the list of Games
             string gameName = "";
             if(gamesDev1.size()==gamesDev2.size() && gamesDev2.size()==gamesDev3.size())
                 for(int i = 0; i < gamesDev2.size(); i++){
                     gameName = gamesDev2[i].name;
-                    cout << "|              " << gameName;
-                    p.printSpaces(78-(15+gameName.length()));
+                    cout << "|       " << gameName;
+                    p.printSpaces(78-(8+gameName.length()));
                     cout << "|\n";
                 }
             else {
@@ -288,9 +300,13 @@ int main() {
         }
 
         // Don't move on until user hits Enter
+        if(loopMenu){
+            cout << p.blankline;
+            cout << "|              Press ENTER to continue your gaming search ...";
+            cin.ignore();
+        }
+        
         answered = true;
-        cout << "|    Press ENTER to continue your gaming search ...";
-        cin.ignore();
     }
 
     return 0;
