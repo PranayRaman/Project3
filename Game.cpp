@@ -1,6 +1,6 @@
 #include "Game.h"
 #include "Parsing.h"
-Game::Game(int id_, string name_, vector<string> developers_, vector<string> genres_, vector<string> platforms_, string releaseDate_, double rating_, int playtime_, int achievementCount){
+Game::Game(int id_, string name_, vector<string> developers_, vector<string> genres_, vector<string> platforms_, string releaseDate_, double rating_, int playtime_, int achievementCount_){
     id =  id_;
     name =  name_;
     developers = developers_;
@@ -9,7 +9,7 @@ Game::Game(int id_, string name_, vector<string> developers_, vector<string> gen
     releaseDate = releaseDate_;
     rating = rating_;
     playtime = playtime_;
-    achievementCount = achievementCount;
+    achievementCount = achievementCount_;
 }
 
 void Game::printInfo(){
@@ -76,24 +76,24 @@ void Game::printInfo(){
         cout << "|              Here's the game you are looking for!                           |\n";
         cout << "|                                                                             |\n";
         cout << "|              Get to \"Know Your Game\"!!!                                     |\n";
-        cout << "|              ID: " << idstring;
-        p.printSpaces(78-(19+idstring.length())); cout << "|\n";
-        cout << "|              Name: " << name;
-        p.printSpaces(78-(21+name.length())); cout << "|\n";
-        cout << "|              Developers: " << developersstring;
-        p.printSpaces(78-(27+developersstring.length())); cout << "|\n";
-        cout << "|              Genres: " << genresstring;
-        p.printSpaces(78-(23+genresstring.length())); cout << "|\n";
-        cout << "|              Platforms: "<< platformsstring;
-        p.printSpaces(78-(26+platformsstring.length())); cout << "|\n";
-        cout << "|              Release Date: " << releaseDate;
-        p.printSpaces(78-(29+releaseDate.length())); cout << "|\n";
-        cout << "|              Rating: " << ratingstring;
-        p.printSpaces(78-(23+ratingstring.length())); cout << "|\n";
-        cout << "|              Playtime: " << playtimestring;
-        p.printSpaces(78-(25+playtimestring.length())); cout << "|\n";
-        cout << "|              Achievement Count: " << achievementcountstring;
-        p.printSpaces(78-(34+achievementcountstring.length())); cout << "|\n";
+        cout << "|       ID: " << idstring;
+        p.printSpaces(78-(12+idstring.length())); cout << "|\n";
+        cout << "|       Name: " << name;
+        p.printSpaces(78-(14+name.length())); cout << "|\n";
+        cout << "|       Developers: " << developersstring;
+        p.printSpaces(78-(20+developersstring.length())); cout << "|\n";
+        cout << "|       Genres: " << genresstring;
+        p.printSpaces(78-(16+genresstring.length())); cout << "|\n";
+        cout << "|       Platforms: "<< platformsstring;
+        p.printSpaces(78-(19+platformsstring.length())); cout << "|\n";
+        cout << "|       Release Date: " << releaseDate;
+        p.printSpaces(78-(22+releaseDate.length())); cout << "|\n";
+        cout << "|       Rating: " << ratingstring;
+        p.printSpaces(78-(16+ratingstring.length())); cout << "|\n";
+        cout << "|       Playtime: " << playtimestring;
+        p.printSpaces(78-(18+playtimestring.length())); cout << "|\n";
+        cout << "|       Achievement Count: " << achievementcountstring;
+        p.printSpaces(78-(27+achievementcountstring.length())); cout << "|\n";
         cout << "|-----------------------------------------------------------------------------|\n";
     }
 }
