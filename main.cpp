@@ -113,7 +113,8 @@ int main() {
 
         if(q1c1){   //if search by ID
             cout << "|              Enter an ID number: ";
-            cin >> userInput;
+            cin.ignore();
+            getline(cin, userInput);
             if(userInput == "exit" || userInput == "Exit"){
                 loopMenu = false;
                 break;
