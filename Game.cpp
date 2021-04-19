@@ -71,7 +71,7 @@ void Game::printInfo(){
         if(achievementCount == 0)
             achievementcountstring = "None";
         else
-            achievementcountstring = std::to_string(achievementCount) + "achievements to get!";
+            achievementcountstring = std::to_string(achievementCount) + " achievements to get!";
         cout << "|-----------------------------------------------------------------------------|\n";
         cout << "|              Here's the game you are looking for!                           |\n";
         cout << "|                                                                             |\n";
